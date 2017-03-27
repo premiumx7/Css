@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<meta charset="UTF-8">
+		<title>...</title>
+	</head>
+	<body>
+<table>
+	<tr>
+		<td>
+						<table class="menu">
+							<tr>
+								<td><i class="fa fa-home fa-3x"></td> <td> <a href="#"> Home</a></td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-play-circle-o fa-3x"></td> <td> <a href="#"> Browse</a></td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-paper-plane-o fa-3x"></td> <td> <a href="#"> Paths</a></td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-hand-o-right fa-3x"></td> <td> <a href="#"> Menthors</a></td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-bullseye fa-3x"></td> <td> <a href="#"> Channels</a></td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-bookmark-o fa-3x"></td> <td> <a href="#"> Bookmarks</a></td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-sticky-note-o fa-3x"></td> <td> <a href="#"> Notes</a></td>
+							</tr>
+						</table>
+		</td>
+		<td class="frame" width="100%">
+
+			<div class="first-attempt">
+
+				<div class="border">
+
+				<div class="white-widget"> <p>What is your budget?</p></div>
+
+				<div class="black-widget"> 
+					<p>$ <span id="range">0</span></p>
+					<input id="hajs" type="range"  min="0" max="120" onchange="showValue(this.value)"/>				
+					</div>
+
+				<div class="yellow-widget"> <p>Send</p></div>
+
+				</div>
+
+			</div>
+		</td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+function showValue(newValue)
+{
+	document.getElementById("range").innerHTML=newValue;
+}
+</script>
+
+	</body>
+</html>
+
+<style>
+.fa {
+    color:  rgb(187, 187, 187);
+}
+
+.menu tr td a {
+	text-decoration: none;
+	color: rgb(222, 222, 222);
+	font-size: 125%;
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: 2px;
+	margin-left: 10px;
+}
+
+.menu tr td:first-child{
+	text-align:center; 
+}
+
+.menu{
+	 background-color: rgb(28, 28, 28);
+	 border-radius: 15px 50px; 
+     padding: 20px; 
+     width: 200px;
+     height: 150px; 
+	 border-left: 4px solid rgb(202, 202, 202);
+	 height: 930px;
+}
+
+.menu  tr:hover a {
+	color: rgb(200, 1, 1);
+}
+
+ .menu  tr:hover i {
+	color: rgb(255, 255, 255);
+    animation-name: spin;
+    animation-duration: 100ms;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;	
+}
+
+
+body{
+	background-color: black;
+}
+
+@keyframes spin{
+
+0%{ transform:rotate(0deg); }
+70%{transform:rotate(18deg);}
+100%{transform:rotate(0deg);}
+
+
+}
+
+
+.border{
+	display: block;
+	margin-left: 50px;
+	margin-top: 130px;
+	position: absolute;  
+}
+
+.first-attempt
+{ 
+	text-align: center; 
+	width: 800px;
+	height: 600px;
+	background-color: #3ddecd;
+	margin: 0 auto;
+}
+
+.white-widget
+{ 	
+	text-align: center; 
+	width: 600px;
+	height: 100px;
+	background-color: #f7f7f7;
+		margin: 0 auto;
+	display: block;
+	font-size: 150%;
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: 2px;
+	z-index: 3;
+	position: relative;
+}
+
+.black-widget
+{ 	
+	text-align: center; 
+	width: 700px;
+	height: 140px;
+	background-color: #191919;
+	margin: 0 auto;
+	display: block;
+	margin-top:-20px;
+    color:white;
+	font-size: 350%;
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: 2px;
+	position: relative;
+	z-index: 2;
+}
+
+.yellow-widget
+{ 	
+	text-align: center; 
+	width: 550px;
+	height: 110px;
+	background-color: #e6e65c;
+	margin: 0 auto;
+	display: block;
+	margin-top:-20px;
+    color:black;
+	font-size: 230%;
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: 2px;
+	z-index: 1;
+}
+
+p{
+	position:absolute;
+	margin-left: 230px;
+	margin-top:40px;
+}
+
+#hajs{
+	position:absolute;
+	margin-top:90px;
+	margin-left: -300px;
+	width: 600px;
+}
+
+input{
+	width: 800px;
+	height: 50px;
+	background-color: rgb(29, 29, 29);
+	border: 0;
+	
+}
+
+.frame{
+background-color: #4a4a4a;
+}
+
+</style>
