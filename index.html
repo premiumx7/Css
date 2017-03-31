@@ -9,13 +9,13 @@
 	<body>
 
 			<table class="menu">
-							<tr>
+							<tr onclick="smoothScroll(document.getElementById('home'))">
 								<td><i class="fa fa-home fa-3x"></td> <td> <a href="#"> Home</a></td>
 							</tr>
-							<tr>
-								<td><i class="fa fa-play-circle-o fa-3x"></td> <td> <a href="#"> Browse</a></td>
+							<tr onclick="smoothScroll(document.getElementById('browse'))">
+								<td> <i class="fa fa-play-circle-o fa-3x"></td> <td> <a href="#"> Browse</a></td>
 							</tr>
-							<tr>
+							<tr onclick="smoothScroll(document.getElementById('paths'))">
 								<td><i class="fa fa-paper-plane-o fa-3x"></td> <td> <a href="#"> Paths</a></td>
 							</tr>
 							<tr>
@@ -33,40 +33,17 @@
 						</table>
 
 <table class="main-table">
-	<tr>
-
-		<td class="frame">
-
-			<div class="first-attempt">
-
-				<div class="border">
-
-				<div class="white-widget"> <p>What is your budget?</p></div>
-
-				<div class="black-widget"> 
-					<p>$ <span id="range">0</span></p>
-					<input id="hajs" type="range"  min="0" max="120" onchange="showValue(this.value)"/>				
-					</div>
-
-				<div class="yellow-widget"> <p>Send</p></div>
-
-				</div>
-
-			</div>
-		</td>
-	</tr>
-
-	<tr>
+	<tr id="home">
 		<td class="frame gradiant-frame">
 
-			<table class="menu-shop" border="0">
+			<table class="menu-shop" border="0"  style="table-layout: fixed;">
 				<tr>
-						<td class='tuple'>
+						<td colspan="2" class='tuple' style="width:25%">
 						<i class="fa fa-ravelry fa-4x"></i><a href="#">QE</a>
 							
 
 					</td>
-					<td class='tuple'></td>
+				
 				<td class='tuple'>
 						<i class="fa fa-home fa-2x">
 							<div><a href="#"> Home</a></div>
@@ -173,7 +150,7 @@ Courteous. Models must interact with a large number of people, such as agents, p
 						</div>
 						</div>
 					</td>
-					<td colspan="1">
+					<td colspan="1" class="box-silver">
 						<div>
 							<img src="F.png">
 						</div>
@@ -190,6 +167,32 @@ Courteous. Models must interact with a large number of people, such as agents, p
 
 		</td>
 	</tr>
+
+		<tr id="browse">
+
+		<td class="frame">
+
+			<div class="first-attempt">
+
+				<div class="border">
+
+				<div class="white-widget"> <p>What is your budget?</p></div>
+
+				<div class="black-widget"> 
+					<p>$ <span id="range">0</span></p>
+					<input id="hajs" type="range"  min="0" max="120" onchange="showValue(this.value)"/>				
+					</div>
+
+				<div class="yellow-widget"> <p>Send</p></div>
+
+				</div>
+
+			</div>
+		</td>
+	</tr>
+		<tr id="paths">
+			<td  class="frame"></td>
+		</tr>
 </table>
 
 <script type="text/javascript">
@@ -231,10 +234,11 @@ function showValue(newValue)
 	 background-color: rgb(28, 28, 28);
 	 border-radius: 15px 50px; 
      padding: 20px; 
-     width: 200px;
+     width: 12%;
      height: 150px; 
 	 border-left: 4px solid rgb(202, 202, 202);
-	 height: 935px;
+	 height: 100%;
+	 margin-left: 10px;
 	position: fixed;
 }
 
@@ -361,8 +365,8 @@ input{
 }
 
 .main-table{
-	margin-left: 230px;
-	width: 88%;
+	margin-left: 240px;
+	width: 86%;
 }
 
 .main-table tr{
@@ -374,6 +378,7 @@ input{
 .tuple{
 background-color: #6f6f6f;
 text-align: center;
+
 }
 
 .tuple:hover{
@@ -433,6 +438,28 @@ text-align: center;
 	margin-bottom: 4px; 
 }
 
+.box-silver{	
+	background: linear-gradient(#636363,rgb(45, 45, 45),#4c4c4c);
+	margin-bottom: 4px; 
+}
+
+
+
+@media screen and (max-width: 800px) {
+.menu{
+     width: 1%;
+}
+
+.menu tr td a{
+	display: none;
+}
+
+.main-table{
+	margin-left: 110px;
+
+}
+
+
 
 </style>
 
@@ -465,4 +492,38 @@ function showDivs(n) {
   x[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " w3-red";
 }
+
+
+
+
+
+
+
+
+
+//scroll
+window.smoothScroll = function(target) {
+    var scrollContainer = target;
+    do { //find scroll container
+        scrollContainer = scrollContainer.parentNode;
+        if (!scrollContainer) return;
+        scrollContainer.scrollTop += 1;
+    } while (scrollContainer.scrollTop == 0);
+
+    var targetY = 0;
+    do { //find the top of target relatively to the container
+        if (target == scrollContainer) break;
+        targetY += target.offsetTop;
+    } while (target = target.offsetParent);
+
+    scroll = function(c, a, b, i) {
+        i++; if (i > 30) return;
+        c.scrollTop = a + (b - a) / 30 * i;
+        setTimeout(function(){ scroll(c, a, b, i); }, 20);
+    }
+    // start scrolling
+    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+}
+
+
 </script>
